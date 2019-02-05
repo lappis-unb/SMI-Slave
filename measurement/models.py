@@ -38,6 +38,51 @@ class MinutelyMeasurement(models.Model):
     def get_measure():
         pass
 
+    # def save_measurements(values_list, transductor):
+    # """
+    # Method responsible to save measurements based on values
+    # list received.
+    # Args:
+    #     values_list (list): The list with all important
+    #     measurements values.
+    # Return:
+    #     None
+    # """
+    # measurement = MinutelyMeasurement()
+    # measurement.transductor = transductor
+    
+    # frequency_a = values_list[]
+    # voltage_a  = values_list[]
+    # voltage_b = values_list[]
+    # voltage_c = values_list[]
+    # current_a = values_list[]
+    # current_b = values_list[]
+    # current_c = values_list[]
+    # active_power_a = values_list[]
+    # active_power_b = values_list[]
+    # active_power_c = values_list[]
+    # total_active_power = values_list[]
+    # reactive_power_a = values_list[]
+    # reactive_power_b = values_list[]
+    # reactive_power_c = values_list[]
+    # total_reactive_power_a = values_list[]
+    # apparent_power_a = values_list[]
+    # apparent_power_b = values_list[]
+    # apparent_power_c = values_list[]
+    # total_apparent_power = values_list[]
+    # power_factor_a = values_list[]
+    # power_factor_b = values_list[]
+    # power_factor_c = values_list[]
+    # total_power_factor = values_list[]
+    # dht_voltage_a = values_list[]
+    # dht_voltage_b = values_list[]
+    # dht_voltage_c = values_list[]
+    # dht_current_a = values_list[]
+    # dht_current_b = values_list[]
+    # dht_current_c = values_list[]
+
+    # measurement.save()
+
 class QuarterlyMeasurement(models.Model):
     
     generated_energy_peak_time = models.FloatField(default=None)
@@ -51,6 +96,30 @@ class QuarterlyMeasurement(models.Model):
 
     def get_measure():
         pass
+    
+    # def save_measurements(values_list, transductor):
+    # """
+    # Method responsible to save measurements based on values
+    # list received.
+    # Args:
+    #     values_list (list): The list with all important
+    #     measurements values.
+    # Return:
+    #     None
+    # """
+    # measurement = QuarterlyMeasurement()
+    # measurement.transductor = transductor
+    
+    # generated_energy_peak_time = values_list[]
+    # generated_energy_off_peak_time = values_list[]
+    # consumption_peak_time = values_list[]
+    # consumption_off_peak_time = values_list[]
+    # inductive_power_peak_time = values_list[]
+    # inductive_power_off_peak_time = values_list[]
+    # capacitive_power_peak_time = values_list[]
+    # capacitive_power_off_peak_time = values_list[]
+
+    # measurement.save()
 
 class MonthlyMeasurement(models.Model):
 
@@ -69,6 +138,36 @@ class MonthlyMeasurement(models.Model):
 
     def get_measure():
         pass
+
+    # def save_measurements(values_list, transductor):
+    #     """
+    #     Method responsible to save measurements based on values
+    #     list received.
+
+    #     Args:
+    #         values_list (list): The list with all important
+    #         measurements values.
+
+    #     Return:
+    #         None
+    #     """
+    #     measurement = MonthlyMeasurement()
+    #     measurement.transductor = transductor
+
+    #     generated_energy_peak_time = values_list[]
+    #     generated_energy_off_peak_time = values_list[]
+    #     consumption_peak_time = values_list[]
+    #     consumption_off_peak_time = values_list[]
+    #     inductive_power_peak_time = values_list[]
+    #     inductive_power_off_peak_time = values_list[]
+    #     capacitive_power_peak_time = values_list[]
+    #     capacitive_power_off_peak_time = values_list[]
+    #     active_max_power_peak_time = values_list[]
+    #     active_max_power_off_peak_time = values_list[]
+    #     reactive_max_power_peak_time = values_list[]
+    #     reactive_max_power_off_peak_time = values_list[]
+
+    #     measurement.save()
 
 class Measurement(models.Model):
     """
@@ -118,35 +217,8 @@ class EnergyMeasurement(Measurement):
         EnergyTransductor,related_name="measurements", on_delete=models.CASCADE
     )
 
-    consumption_a = models.FloatField(default=None)
-    consumption_b = models.FloatField(default=None)
-    consumption_c = models.FloatField(default=None)
-    total_consumption = models.FloatField(default=None)
-
     def __str__(self):
         return '%s' % self.collection_date
-
-    def save_measurements(values_list, transductor):
-        """
-        Method responsible to save measurements based on values
-        list received.
-
-        Args:
-            values_list (list): The list with all important
-            measurements values.
-
-        Return:
-            None
-        """
-        measurement = EnergyMeasurement()
-        measurement.transductor = transductor
-
-        measurement.consumption_a = values_list[29]
-        measurement.consumption_b = values_list[30]
-        measurement.consumption_c = values_list[31]
-        measurement.total_consumption = values_list[32]
-
-        measurement.save()
 
     def get_time_measurements():
         measures = [
