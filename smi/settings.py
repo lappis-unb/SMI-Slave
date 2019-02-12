@@ -41,8 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
-    'measurement',
     'rest_framework',
+    'rest_framework_swagger',
+    'measurement',
     'transductor_model',
     'transductor',
 ]
@@ -141,3 +142,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+api_description = \
+"""
+
+"""
+
+SWAGGER_SETTINGS = {
+    'info': {
+        'description': "<p>This is the API documentation for UnB's "
+                    'Sistema de Monitoramento de Insumos.</p>'
+                    'Here you\'ll find out the endpoints that can be acessed '
+                    'for the system\'s slave component.',
+        'license': 'MIT',
+    }
+}

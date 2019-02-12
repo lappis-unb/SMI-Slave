@@ -15,11 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
 from django.conf.urls import include
 from boogie.rest import rest_api
 
+from rest_framework_swagger.views import get_swagger_view
+
+
+schema_view = get_swagger_view(title='SMI\'s slave API', url='/api/')
+schema_view.cls.schema = None
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(rest_api.urls)),
+    path('', schema_view, name='swagger-home'),
 ]
