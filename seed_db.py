@@ -98,6 +98,8 @@ if __name__ == '__main__':
     django.setup()
 
     from transductor.models import EnergyTransductor
+
+    # This model does not exists
     from transductor_model.models import TransductorModel
 
     populate()
