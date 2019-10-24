@@ -1,10 +1,11 @@
-import importlib
 import socket
 
 from abc import ABCMeta, abstractmethod
 
-from .exceptions import NumberOfAttempsReachedException, \
+from .exceptions import (
+    NumberOfAttempsReachedException,
     CRCInvalidException
+)
 
 
 class TransportProtocol(metaclass=ABCMeta):
@@ -104,8 +105,8 @@ def TcpProtocol(TransportProtocol):
 
     def open_socket(self):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.socket.settimeout(timeout)
-        self.socket.connect((self.transductor.ip_address, port))
+        self.socket.settimeout(self.timeout)
+        self.socket.connect((self.transductor.ip_address, self.port))
 
     def send_message(self, message):
         self.socket.sendto(message)
