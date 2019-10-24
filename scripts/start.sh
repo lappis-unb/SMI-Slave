@@ -34,7 +34,8 @@ echo '======= RUNNING MIGRATIONS'
 python3 manage.py migrate
 
 echo '======= RUNNING SEED'
-python3 seed_db.py
+# this script is using a model that don't exist anymore
+# python3 seed_db.py
 
 echo '======= STARTING CRON'
 cron

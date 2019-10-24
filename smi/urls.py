@@ -15,15 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls import url
-from rest_framework.routers import DefaultRouter
 
-from django.urls import path, include
-from django.conf.urls import url    
+from rest_framework.routers import DefaultRouter
 
 from transductor import views as energy_transductor_views
 from measurement import views as measurements_views
-
 
 router = DefaultRouter()
 

@@ -1,4 +1,4 @@
-from rest_framework import serializers, viewsets, mixins
+from rest_framework import viewsets, mixins
 
 from .models import EnergyTransductor
 from .serializers import EnergyTransductorSerializer
