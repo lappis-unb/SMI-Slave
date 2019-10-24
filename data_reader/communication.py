@@ -1,5 +1,3 @@
-from .exceptions import CRCInvalidException
-import importlib
 import struct
 import sys
 import math
@@ -7,8 +5,6 @@ import math
 from abc import ABCMeta, abstractmethod
 from django.utils import timezone
 
-from .exceptions import RegisterAddressException
-from .exceptions import CRCInvalidException
 from .exceptions import NotANumberException
 
 
@@ -83,8 +79,8 @@ class ModbusRTU(SerialProtocol):
 
         if(request.__len__() == 2):
             for register in request[1]:
-                message = self.int_to_bytes(1, 1) 
-                message += self.int_to_bytes(request[0], 1) 
+                message = self.int_to_bytes(1, 1)
+                message += self.int_to_bytes(request[0], 1)
                 message += self.int_to_bytes(register[0], 2)
                 aux = register[1]
                 message += self.int_to_bytes(aux, 2)
@@ -92,9 +88,9 @@ class ModbusRTU(SerialProtocol):
                 message += self.int_to_bytes(aux, 2, 'little')
                 messages.append(message)
         else:
-            messages_bodies = zip(request[1], request[2])    
+            messages_bodies = zip(request[1], request[2])
             for message_body in messages_bodies:
-                message = self.int_to_bytes(1, 1) 
+                message = self.int_to_bytes(1, 1)
                 message += self.int_to_bytes(request[0], 1)
                 message += self.int_to_bytes(message_body[0][0], 2)
                 aux = message_body[0][1]
@@ -105,14 +101,14 @@ class ModbusRTU(SerialProtocol):
                 message += self.int_to_bytes(aux, 2, 'little')
                 messages.append(message)
 
-        return messages    
+        return messages
 
     def get_content_from_messages(self, collection_type, recived_messages,
                                   date=None):
         request = \
             self.transductor_model.data_collection(
                 collection_type, date)
-        messages_registers = zip(recived_messages, request[1])    
+        messages_registers = zip(recived_messages, request[1])
         messages_content = []
         for message_register in messages_registers:
             messages_content.append(self.get_content_from_message(
@@ -122,7 +118,7 @@ class ModbusRTU(SerialProtocol):
         return messages_content
 
     def get_content_from_message(self, message, message_type):
-        message = message[3:-2]            
+        message = message[3:-2]
         if(message_type == 1):
             message_content = self.bytes_to_int(message)
         elif(message_type == 2):
@@ -149,7 +145,7 @@ class ModbusRTU(SerialProtocol):
 
         Returns:
             bool: True if CRC is valid, False otherwise.
-        """            
+        """
         crc = struct.pack("<H", self._computate_crc(packaged_message[:-2]))
 
         return (crc == packaged_message[-2:])

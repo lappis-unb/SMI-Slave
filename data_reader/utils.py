@@ -1,23 +1,6 @@
-import sys
-import socket
-import struct
-import importlib
-
-from abc import ABCMeta
-from abc import abstractmethod
-from threading import Thread
-
-from .exceptions import NumberOfAttempsReachedException
-from .exceptions import RegisterAddressException
-from .exceptions import CRCInvalidException
-from .exceptions import InvalidDateException
-
-from .transport import UdpProtocol
-from .communication import ModbusRTU
-
-from transductor_model.models import EnergyTransductorModel
 from transductor.models import EnergyTransductor
-from measurement.models import *
+from datetime import datetime, timezone
+from threading import Thread
 import time
 
 

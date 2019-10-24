@@ -1,11 +1,5 @@
 from django.db import models
-from datetime import datetime
 from django.core.validators import RegexValidator
-from django.contrib.postgres.fields import ArrayField
-# from transductor_model.models import TransductorModel
-from django.utils import timezone
-import json
-from itertools import chain
 
 
 class Transductor(models.Model):

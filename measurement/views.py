@@ -1,5 +1,5 @@
-from rest_framework import serializers, viewsets, mixins
-from .models import Measurement
+from rest_framework import viewsets, mixins
+
 from .models import MinutelyMeasurement
 from .models import QuarterlyMeasurement
 from .models import MonthlyMeasurement
@@ -9,7 +9,6 @@ from .serializers import QuarterlyMeasurementSerializer
 from .serializers import MonthlyMeasurementSerializer
 
 from .pagination import PostLimitOffsetPagination
-from .pagination import PostPageNumberPagination
 
 
 #  this viewset don't inherits from viewsets.ModelViewSet because it

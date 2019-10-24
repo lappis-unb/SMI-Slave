@@ -1,11 +1,9 @@
 from django.db import models
-from datetime import datetime
-from transductor.models import EnergyTransductor
-from django.contrib.postgres.fields import ArrayField, HStoreField
-import json
-from django.core import serializers
-from django.utils import timezone
 from django.conf import settings
+from django.utils import timezone
+from django.contrib.postgres.fields import ArrayField, HStoreField
+
+from transductor.models import EnergyTransductor
 
 
 class Measurement(models.Model):
