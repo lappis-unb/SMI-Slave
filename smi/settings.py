@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import environ
+from .wait_db import start_services
 
 env = environ.Env()
 
@@ -102,6 +103,8 @@ DATABASES = {
         'PORT': env('POSTGRES_PORT')
     }
 }
+
+start_services()
 
 # DATABASES = {
 #     'default': {
